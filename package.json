@@ -22,9 +22,11 @@
   "dependencies": {
     "@nestjs/axios": "^4.0.1",
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "axios": "^1.16.0",
+    "jose": "^6.2.3",
     "pinyin": "^4.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
