@@ -33,14 +33,11 @@ export class QweatherService {
     const token = await new SignJWT(customPayload)
       .setProtectedHeader(customHeader)
       .sign(privateKey);
-    // .then((token) => console.log('JWT: ' + token));
-    // .catch((error) => console.error(error))
     return token;
   }
 
   async getWeather(cityId: number, days: '3d' | '7d' | '10d' | '15d' | '30' = '7d') {
     const YOUR_API_HOST = this.configService.get<string>('YOUR_API_HOST');
-    // https://ke6938bbtg.re.qweatherapi.com/v7/weather/3d?location=101010100
     const url = `https://${YOUR_API_HOST}/v7/weather/${days}?location=${cityId}`;
     const { data } = await firstValueFrom(
       this.httpService.get(url, {
@@ -53,9 +50,6 @@ export class QweatherService {
   }
 
   async getCityIdByCityName(cityName: string) {
-    // curl - X GET--compressed \
-    // -H 'Authorization: Bearer your_token' \
-    // 'https://your_api_host/geo/v2/city/lookup?location=beij'
     const location = pinyin(cityName, { style: pinyin.STYLE_NORMAL }).join('');
     const YOUR_API_HOST = this.configService.get<string>('YOUR_API_HOST');
     const url = `https://${YOUR_API_HOST}/geo/v2/city/lookup?location=${location}`;
