@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { HttpModule } from '@nestjs/axios';
 import { QweatherModule } from './qweather/qweather.module';
 import { ConfigModule } from '@nestjs/config';
+import { RequestLogInterceptor } from './request-log.interceptor';
 
 @Module({
   imports: [
@@ -19,6 +20,12 @@ import { ConfigModule } from '@nestjs/config';
     QweatherModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: 'APP_INTERCEPTOR',
+      useClass: RequestLogInterceptor,
+    }
+  ],
 })
 export class AppModule { }
