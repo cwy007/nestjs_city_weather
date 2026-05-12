@@ -29,6 +29,7 @@
     "jose": "^6.2.3",
     "pinyin": "^4.0.0",
     "reflect-metadata": "^0.2.2",
+    "request-ip": "^3.3.0",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^22.10.7",
     "@types/pinyin": "^2.10.2",
+    "@types/request-ip": "^0.0.41",
     "@types/supertest": "^6.0.2",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",

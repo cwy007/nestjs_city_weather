@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { Observable, tap } from 'rxjs';
+import requestIp from 'request-ip';
 
 @Injectable()
 export class RequestLogInterceptor implements NestInterceptor {
@@ -19,9 +20,10 @@ export class RequestLogInterceptor implements NestInterceptor {
     const userAgent = request.headers['user-agent'];
 
     const { method, path, ip } = request;
+    const clientIp = requestIp.getClientIp(request);
 
     this.logger.debug(
-      `${method} ${path} - ${ip} ${userAgent} ${context.getClass().name}.${context.getHandler().name} invoked...`,
+      `${method} ${path} - ${clientIp} ${userAgent} ${context.getClass().name}.${context.getHandler().name} invoked...`,
     );
 
     const now = Date.now();
